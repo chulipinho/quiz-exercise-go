@@ -17,8 +17,10 @@ func main() {
 	timerDuration := flag.Int("t", 30, "Timer duration in seconds")
 
 	flag.Parse()
-
 	problems := openFile(*filePath)
+
+	fmt.Println("Press enter to start the game!")
+	fmt.Scanln()
 	timer := time.NewTimer(time.Duration(*timerDuration) * time.Second)
 
 	answerCh := make(chan string)
