@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -13,7 +14,7 @@ func main() {
 	defaultPath := "./data/problems.csv"
 	usage := "Specifies custom file for questions."
 	filePath := flag.String("p", defaultPath, usage)
-	timerDuration := flag.Int("t", 2, "Timer duration in seconds")
+	timerDuration := flag.Int("t", 30, "Timer duration in seconds")
 
 	flag.Parse()
 
@@ -61,7 +62,7 @@ func parseProblems(file *csv.Reader) []problem {
 	for i, v := range p {
 		ret[i] = problem{
 			question: v[0],
-			answer:   v[1],
+			answer:   strings.TrimSpace(v[1]),
 		}
 	}
 
